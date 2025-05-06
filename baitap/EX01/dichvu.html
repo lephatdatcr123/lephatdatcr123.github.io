@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Phat Dat Web Design</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Nunito', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f9fafb;
+    color: #333;
+    max-width: 350px;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: #005bbb;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  nav {
+    display: flex;
+    justify-content: space-around;
+    background: #003a75;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  nav a {
+    color: #dbe9ff;
+    text-decoration: none;
+    padding: 0.8rem 0;
+    flex-grow: 1;
+    text-align: center;
+    border-right: 1px solid #005bbb;
+    transition: background-color 0.3s ease;
+  }
+  nav a:last-child {
+    border-right: none;
+  }
+  nav a:hover {
+    background: #0077ff;
+    color: #fff;
+  }
+  main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+  }
+  .subscribe-section {
+    background: #edf4ff;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  .subscribe-section input[type="email"] {
+    border: 1.5px solid #005bbb;
+    border-radius: 4px;
+    padding: 0.5rem;
+    width: 65%;
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+  }
+  .subscribe-section button {
+    background: #005bbb;
+    border: none;
+    color: white;
+    padding: 0.55rem 1rem;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .subscribe-section button:hover {
+    background: #004a99;
+  }
+  .services {
+    margin-bottom: 1rem;
+  }
+  .service-item {
+    background: #fff;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.08);
+  }
+  .service-title {
+    font-weight: 700;
+    color: #005bbb;
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+  }
+  .service-desc {
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+    color: #444;
+  }
+  .service-price {
+    font-weight: 700;
+    color: #0077ff;
+  }
+  form.contact-form {
+    background: #fff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 0.08);
+  }
+  form.contact-form label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    color: #005bbb;
+  }
+  form.contact-form input[type="text"],
+  form.contact-form input[type="email"],
+  form.contact-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.8rem;
+    border-radius: 4px;
+    border: 1.5px solid #005bbb;
+    font-size: 0.95rem;
+    font-family: inherit;
+    resize: vertical;
+  }
+  form.contact-form textarea {
+    height: 80px;
+  }
+  form.contact-form button {
+    background: #0077ff;
+    color: white;
+    padding: 0.6rem 1.2rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  form.contact-form button:hover {
+    background: #005bbb;
+  }
+  footer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: #888;
+    padding: 0.5rem 0;
+    background: #eee;
+  }
+  /* Scrollbar styling for main content */
+  main::-webkit-scrollbar {
+    width: 6px;
+  }
+  main::-webkit-scrollbar-track {
+    background: #f0f0f0;
+  }
+  main::-webkit-scrollbar-thumb {
+    background-color: #005bbb;
+    border-radius: 10px;
+  }
+</style>
+</head>
+<body>
+<header>Phat Dat Web Design</header>
+<nav>
+  <a href="#home" onclick="event.preventDefault(); scrollToSection('home');">Trang chủ</a>
+  <a href="#info" onclick="event.preventDefault(); scrollToSection('info');">Thông tin</a>
+  <a href="#services" onclick="event.preventDefault(); scrollToSection('services');">Dịch vụ</a>
+</nav>
+<main>
+  <section id="subscribe" class="subscribe-section">
+    <p><strong>Đăng ký để nhận thông báo mới từ chúng tôi</strong></p>
+    <form id="subscribe-form" onsubmit="submitSubscribe(event)">
+      <input type="email" id="subscribe-email" placeholder="Nhập Email..." required aria-label="Nhập Email"/>
+      <button type="submit" aria-label="Đăng ký">Đăng ký</button>
+    </form>
+    <p id="subscribe-msg" style="color: green; margin-top: 0.5rem; display:none;">Cảm ơn bạn đã đăng ký!</p>
+  </section>
+  <section id="home"></section>
+  <section id="info">
+    <h2>Thông tin</h2>
+    <p>Phat Dat Web Design cung cấp dịch vụ thiết kế website chuyên nghiệp, giá cả phải chăng cho cá nhân, công ty, doanh nghiệp hoặc tổ chức.</p>
+  </section>
+  <section id="services" class="services">
+    <h2>Dịch vụ</h2>
+    <div class="service-item">
+      <div class="service-title">Thiết kế Website</div>
+      <div class="service-desc">Tạo website chuyên nghiệp, giá cả phải chăng cho cá nhân, công ty, doanh nghiệp hoặc tổ chức.</div>
+      <div class="service-price">Giá: $1,000 - $3,000</div>
+    </div>
+    <div class="service-item">
+      <div class="service-title">Bảo trì Website</div>
+      <div class="service-desc">Bảo trì website chuyên nghiệp, giá cả phải chăng cho cá nhân, công ty, doanh nghiệp hoặc tổ chức.</div>
+      <div class="service-price">Giá: $250 mỗi tháng</div>
+    </div>
+    <div class="service-item">
+      <div class="service-title">Web Hosting</div>
+      <div class="service-desc">Cung cấp hosting chuyên nghiệp, giá cả phải chăng cho cá nhân, công ty, doanh nghiệp hoặc tổ chức.</div>
+      <div class="service-price">Giá: $25 mỗi tháng</div>
+    </div>
+  </section>
+  <section id="contact" class="contact-section">
+    <h2>Liên hệ</h2>
+    <form class="contact-form" id="contact-form" onsubmit="submitContact(event)">
+      <label for="name">Tên</label>
+      <input type="text" id="name" name="name" placeholder="Tên" required />
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Email" required />
+      <label for="message">Nội dung</label>
+      <textarea id="message" name="message" placeholder="Nội dung" required></textarea>
+      <button type="submit" aria-label="Gửi">Gửi</button>
+    </form>
+    <p id="contact-msg" style="color: green; margin-top: 0.5rem; display:none;">Cảm ơn bạn đã liên hệ với chúng tôi!</p>
+  </section>
+</main>
+<footer>Phat Dat Web Design, Copyright © 2022</footer>
+<script>
+  function scrollToSection(id) {
+    const section = document.getElementById(id);
+    if(section) {
+      section.scrollIntoView({behavior: 'smooth'});
+    }
+  }
+  // Subscription form handler
+  function submitSubscribe(e) {
+    e.preventDefault();
+    const emailField = document.getElementById('subscribe-email');
+    const msg = document.getElementById('subscribe-msg');
+    // Simple validation and message simulation
+    if(emailField.checkValidity()) {
+      msg.style.display = 'block';
+      emailField.value = '';
+      setTimeout(() => { msg.style.display = 'none'; }, 4000);
+    }
+  }
+  // Contact form handler
+  function submitContact(e) {
+    e.preventDefault();
+    const form = document.getElementById('contact-form');
+    const msg = document.getElementById('contact-msg');
+    if(form.checkValidity()) {
+      msg.style.display = 'block';
+      form.reset();
+      setTimeout(() => { msg.style.display = 'none'; }, 4000);
+    }
+  }
+</script>
+</body>
+</html>
+
